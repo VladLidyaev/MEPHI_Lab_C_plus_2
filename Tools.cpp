@@ -1,15 +1,27 @@
 #include <iostream>
 #include "Tools.h"
 
-    Object ans_1(Object Line){
-        float a,b,c;
+    Object ans_1_a(Object Line){
+        float a;
         std::cout << "Введите параметр a (!=0) из уравнения y=a*(Cosh((x+b)/a))+c" << std::endl;
         std::cin >> a;
+        Line.SetDataParam_a(a);
+        return Line;
+    };
+
+    Object ans_1_b(Object Line){
+        float b;
         std::cout << "Введите параметр b из уравнения y=a*(Cosh((x+b)/a))+c" << std::endl;
         std::cin >> b;
+        Line.SetDataParam_b(b);
+        return Line;
+    };
+
+    Object ans_1_c(Object Line){
+        float c;
         std::cout << "Введите параметр c из уравнения y=a*(Cosh((x+b)/a))+c" << std::endl;
         std::cin >> c;
-        Line.SetDataParam(a,b,c);
+        Line.SetDataParam_c(c);
         return Line;
     };
 
