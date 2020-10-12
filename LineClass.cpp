@@ -2,25 +2,49 @@
 #include <cmath>
 #include "LineClass.h"
 
-    float param_a,param_b,param_c;
-
-    void Object::SetDataParam(float new_param_a,float new_param_b,float new_param_c){
+    void Object::SetDataParam_a(float new_param_a){
         param_a = new_param_a;
+    }
+
+    void Object::SetDataParam_b(float new_param_b){
         param_b = new_param_b;
+    }
+
+    void Object::SetDataParam_c(float new_param_c){
         param_c = new_param_c;
     }
 
-    void Object::GetData(){
-        std::cout << "Уравнение Цепной Линии: y=a*(Cosh((x+b)/a))+c, где a=" << param_a << " ,b=" << param_b << " ,c=" << param_c << std::endl;
+    std::string Object::GetData() const {
+        std::stringstream ss;
+        ss << "Уравнение Цепной Линии: y=a*(Cosh((x+b)/a))+c, где a=" << param_a << " ,b=" << param_b << " ,c=" << param_c << std::endl;
+        return ss.str();
     }
 
-    float Object::GetOrd(float Abs){
+    std::string Object::GetData_a() const {
+        std::stringstream ss;
+        ss << "Уравнение Цепной Линии: y=a*(Cosh((x+b)/a))+c, где a=" << param_a << std::endl;
+        return ss.str();
+    }
+
+    std::string Object::GetData_b() const {
+        std::stringstream ss;
+        ss<< "Уравнение Цепной Линии: y=a*(Cosh((x+b)/a))+c, где b=" << param_b << std::endl;
+        return ss.str();
+    }
+
+    std::string Object::GetData_c() const {
+        std::stringstream ss;
+        ss << "Уравнение Цепной Линии: y=a*(Cosh((x+b)/a))+c, где c=" << param_c << std::endl;
+        return ss.str();
+    }
+
+    float Object::GetOrd(float Abs) const {
         float val = cosh((Abs+param_b)/param_a);
         float Ord = param_a*val+param_c;
         return Ord;
     }
 
-    float Object::GetLen(float Abs1,float Abs2){
+    float Object::GetLen(float Abs1,float Abs2) const {
         if (Abs1<Abs2){
             int value = Abs1;
             Abs1 = Abs2 + param_b;
@@ -35,12 +59,12 @@
         return (param_a*(dop1-dop2)) ;
     }
 
-    float Object::GetRadius(float Abs){
+    float Object::GetRadius(float Abs) const {
         Abs += param_b;
         return ((GetOrd(Abs))*(GetOrd(Abs))/param_a);
     }
 
-    Coord Object::GetCentrCoord(float Abs){
+    Coord Object::GetCentrCoord(float Abs) const {
         float Radius = GetRadius(Abs);
         float Ord = GetOrd(Abs);
         float delta_x = 0.001;
@@ -51,7 +75,7 @@
         return point;
     }
 
-    float Object::GetSq(float Abs1, float  Abs2){
+    float Object::GetSq(float Abs1, float  Abs2) const {
         if (Abs1<Abs2){
             int value = Abs1;
             Abs1 = Abs2 + param_b;
