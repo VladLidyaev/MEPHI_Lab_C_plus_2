@@ -1,0 +1,53 @@
+#include <iostream>
+#include "Tools.h"
+
+    Object ans_1(Object Line){
+        float a,b,c;
+        std::cout << "Введите параметр a (!=0) из уравнения y=a*(Cosh((x+b)/a))+c" << std::endl;
+        std::cin >> a;
+        std::cout << "Введите параметр b из уравнения y=a*(Cosh((x+b)/a))+c" << std::endl;
+        std::cin >> b;
+        std::cout << "Введите параметр c из уравнения y=a*(Cosh((x+b)/a))+c" << std::endl;
+        std::cin >> c;
+        Line.SetDataParam(a,b,c);
+        return Line;
+    };
+
+    void ans_3(Object Line){
+        float Abs;
+        std::cout << "Введите абсциссу: " << std::endl;
+        std::cin >> Abs;
+        std::cout << "Значение ординаты : " << Line.GetOrd(Abs) << std::endl;
+    };
+
+    void ans_4(Object Line){
+        float Abs1,Abs2;
+        std::cout << "Введите первую абсциссу: " << std::endl;
+        std::cin >> Abs1;
+        std::cout << "Введите вторую абсциссу: " << std::endl;
+        std::cin >> Abs2;
+        std::cout << "Длина дуги кривой, ограниченная точками с введёнными абсциссами : " << Line.GetLen(Abs1,Abs2) << std::endl;
+    };
+
+    void ans_5(Object Line){
+        float Abs;
+        std::cout << "Введите абсциссу: " << std::endl;
+        std::cin >> Abs;
+        std::cout << "Радиус кривизны кривой в точке с введённой абсциссой : " << Line.GetRadius(Abs) << std::endl;
+    };
+
+    void ans_6(Object Line){
+        float Abs;
+        std::cout << "Введите абсциссу: " << std::endl;
+        std::cin >> Abs;
+        std::cout << "Кординаты центра кривизны кривой в точке с введённой абсциссой : X = " << Line.GetCentrCoord(Abs).X << " , Y = " << Line.GetCentrCoord(Abs).Y << std::endl;
+    };
+
+    void ans_7(Object Line){
+        float Abs1,Abs2;
+        std::cout << "Введите первую абсциссу: " << std::endl;
+        std::cin >> Abs1;
+        std::cout << "Введите вторую абсциссу: " << std::endl;
+        std::cin >> Abs2;
+        std::cout << "Площадь под кривой, ограниченная точками с введёнными абсциссами : " << Line.GetSq(Abs1,Abs2) << std::endl;
+    };
